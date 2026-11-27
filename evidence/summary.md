@@ -13,26 +13,26 @@
 ## 2. Số chính
 
 - Khảo sát: n = 23; nhóm xác nhận 20 người ngoài nhóm. Sheet có 22 học viên L3A/L3B và 1 Lab Coach. Các số dưới đây phân tích riêng 22 học viên trong toàn bộ sheet, không phải riêng 20 người ngoài nhóm vì sheet không đánh dấu cụ thể phản hồi nào thuộc nhóm đó.
-- Trải nghiệm hiện tại: 6/22 (27%) chọn “Dễ bị nhầm phòng hoặc không rõ cập nhật mới nhất”; 5/22 (23%) chọn “Phải dò danh sách / bảng / tin nhắn nhiều bước”; tổng cộng 11/22 (50%) chọn một trong hai trải nghiệm này. 11/22 (50%) chọn “Tra cứu nhanh, rõ ràng, ít vướng mắc”.
-- Tần suất trong tuần qua: 9/22 (41%) chọn 1–2 lần; 2/22 (9%) chọn 3 lần trở lên; tổng 11/22 (50%) báo gặp ít nhất một lần. 11/22 (50%) chọn “Chưa lần nào”.
-- Câu chọn tối đa 2 về tình huống khi xem lịch: 9/22 chọn bị nhầm phòng/mất thời gian dò lại; 6/22 chọn lịch ghi phòng lẻ H2xx nhưng thực tế gộp sang H209/H210; 9/22 cũng chọn “Ít gặp / Không bị ảnh hưởng nhiều”. Các lựa chọn không loại trừ nhau.
+- Phòng thực hành (câu hỏi riêng): 6/22 (27%) chọn “Dễ bị nhầm phòng hoặc không rõ cập nhật mới nhất”; 5/22 (23%) chọn “Phải dò danh sách / bảng / tin nhắn nhiều bước”; tổng cộng 11/22 (50%) chọn một trong hai trải nghiệm này. 11/22 (50%) chọn “Tra cứu nhanh, rõ ràng, ít vướng mắc”.
+- Tần suất phòng thực hành trong tuần qua: 9/22 (41%) chọn 1–2 lần; 2/22 (9%) chọn 3 lần trở lên; tổng 11/22 (50%) báo gặp ít nhất một lần. 11/22 (50%) chọn “Chưa lần nào”. Không dùng các số này làm tần suất phòng lý thuyết.
+- Phòng lý thuyết (câu chọn tối đa 2 về tình huống khi xem lịch): 6/22 (27%) chọn lịch ghi phòng lẻ H2xx nhưng thực tế gộp sang H209/H210; 8/22 (36%) chọn bị nhầm phòng/mất thời gian dò lại; 4/22 (18%) chọn thông tin phòng nằm rải rác; 10/22 (45%) cũng chọn “Ít gặp / Không bị ảnh hưởng nhiều”. Các lựa chọn không loại trừ nhau. Câu hỏi không đo số lần theo tháng, thời gian dò hay việc có ai thực sự đến phòng trống.
 - Khảo sát không hỏi số phút mất mỗi lần; không có dữ liệu phỏng vấn để điền P1–P3.
 
 ## 3. Trích dẫn / ví dụ nguyên văn (ẩn danh theo thứ tự phản hồi)
 
-1. “Phải dò danh sách / bảng / tin nhắn nhiều bước mới ra đúng phòng của mình” — R04, trải nghiệm hiện tại.
-2. “Dễ bị nhầm phòng hoặc không rõ cập nhật mới nhất” — R18, trải nghiệm hiện tại.
-3. “Tên phòng cần đúng cần phải hiển thị to rõ ràng, nếu có đổi/gộp phải có hình dấu mũi tên chỉ sang phòng mới và gạch (strikethrough) phòng cũ” — R22, câu trả lời về thông tin cần ưu tiên.
-4. “Hiển thị rõ/highlight thông tin trong 3 ngày tới, cần đặc biệt highlight thời gian và phòng” — R23, câu trả lời về thông tin cần ưu tiên.
-5. “Tra cứu phòng ưu tiên nhất, càn phải hiển thị lịch đầy đủ lớp của MSSV đấy” — R01, câu trả lời về tính năng/thông tin cần ưu tiên.
+1. “Lịch ghi phòng lẻ H2xx nhưng thực tế gộp sang H209 / H210” — R01, tình huống khi xem TKB lý thuyết.
+2. “Lịch ghi phòng lẻ H2xx nhưng thực tế gộp sang H209 / H210” — R02, cùng tình huống được chọn bởi một người trả lời khác.
+3. “Bị nhầm phòng hoặc mất thời gian dò lại xem hôm nay gộp/đổi phòng chưa” — R08, tình huống khi xem TKB lý thuyết; người này cũng chọn tình huống gộp phòng.
+4. “Thông tin phòng nằm rải rác nhiều nơi nên không chắc bản nào mới nhất” — R21, tình huống khi xem TKB lý thuyết.
+5. “Tên phòng cần đúng cần phải hiển thị to rõ ràng, nếu có đổi/gộp phải có hình dấu mũi tên chỉ sang phòng mới và gạch (strikethrough) phòng cũ” — R22, mong muốn về cách hiển thị khi đổi/gộp.
 
 ## 4. Các nguồn có khớp nhau không
 
-Nhóm không thực hiện phỏng vấn. Phần đào data là phép đếm lại cùng bảng khảo sát, không phải nguồn độc lập để đối chiếu. Trong khảo sát, 11/22 học viên chọn trải nghiệm nhầm phòng hoặc phải dò nhiều bước, nhưng 11/22 chọn tra cứu nhanh/rõ/ràng và 9/22 đánh dấu tình huống “Ít gặp / Không bị ảnh hưởng nhiều”. Điều này cho thấy trải nghiệm không đồng nhất; cần kiểm tra thêm theo lần gần nhất và bối cảnh cụ thể. Đây là tự báo cáo, không phải quan sát hành vi.
+Nhóm không thực hiện phỏng vấn. Phần đào data là phép đếm lại cùng bảng khảo sát, không phải nguồn độc lập. Với phòng lý thuyết, 6/22 chọn tình huống H2xx thực tế gộp H209/H210, 8/22 chọn nhầm phòng / dò lại, trong khi 10/22 cũng chọn “Ít gặp / Không bị ảnh hưởng nhiều”; các đáp án có thể trùng nhau. Với phòng thực hành, 11/22 chọn trải nghiệm dễ tra cứu, rõ ràng. Hai phần là câu hỏi khác nhau; nhóm ưu tiên pain phòng lý thuyết theo phạm vi dự án. Đây là tự báo cáo, chưa xác minh có ai thực sự đến phòng trống.
 
 ## 5. Kết luận
 
-Giả thuyết ở `evidence/hypothesis.md`: **chưa thể kết luận đúng / sai / phải đổi** vì file giả thuyết chưa được điền. Khảo sát cho thấy một nửa số học viên trả lời chọn trải nghiệm nhầm phòng hoặc phải tra cứu nhiều bước; đồng thời một nửa cho biết không gặp tình huống trong tuần qua. Nhóm xác nhận 20/23 người ngoài nhóm, nhưng sheet không chỉ rõ đó là những phản hồi nào nên chưa thể tính riêng kết quả của họ. Chưa biết tần suất trong tháng, thời gian bị mất, và mức độ đại diện của mẫu.
+Giả thuyết ở `evidence/hypothesis.md`: **chưa thể kết luận đúng / sai / phải đổi** vì file giả thuyết chưa được điền. Khảo sát có tín hiệu về bất an phòng lý thuyết: 6/22 chọn tình huống gộp H2xx sang H209/H210 và 8/22 chọn nhầm phòng / dò lại. Tuy vậy, chưa biết số lần xảy ra trong tháng, thời gian dò, hay việc học viên có thực sự đến phòng trống hay không. Nhóm xác nhận 20/23 người ngoài nhóm, nhưng sheet không chỉ rõ các phản hồi đó nên chưa tính riêng được.
 
 ## Lịch hẹn (dùng cho CP2 — chỉ ghi vai và giờ, không tên)
 

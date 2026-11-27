@@ -7,23 +7,23 @@ Track: [x] A · [ ] B · [ ] C · [ ] D · [ ] E — bài toán: nhóm tự mở
 Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 
 ## §0. Hiện tại việc này diễn ra thế nào *(guide 1.1)*
-- Luồng hiện tại của việc này, trong khoá hoặc trên app thật (3–5 bước; ảnh chụp từ tài khoản của mình, đã che thông tin):
-- Công cụ / AI đang được dùng cho việc này (nếu có) + nguồn. Không kiểm được thì ghi "chưa kiểm":
+- Luồng hiện tại theo pain học viên (tái dựng từ khảo sát, chưa quan sát trực tiếp): học viên xem TKB và tìm được phòng lý thuyết ghi là H2xx → lo buổi học có thể đã gộp sang H209/H210 nên phòng ghi trên lịch có thể vắng → dò lại thông tin đổi/gộp ở các nguồn khác để xác nhận. Khảo sát không ghi đủ các bước xác nhận cụ thể.
+- Công cụ / AI đang được dùng để xác nhận phòng lý thuyết: khảo sát không hỏi tên công cụ hay nguồn chính thức; **chưa kiểm**. Quy trình người vận hành cập nhật / xác nhận TKB trong §4 là luồng dự kiến, chưa được quan sát.
 
 ## §1. Người dùng & bằng chứng *(guide 1.1, 1.2)*
-- Người dùng chính (một vai cụ thể):
-- Việc họ cố làm xong (`động từ + đối tượng + bối cảnh`, không có chữ AI):
-- Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ:
-- Pain (KHÔNG chữ AI): ai — đang làm gì — vướng đâu — hậu quả gì:
-- Bằng chứng — số chính + kết luận (chi tiết: `evidence/summary.md`): __
+- Người dùng chính: học viên L3A/L3B sắp tham gia buổi lý thuyết có phòng trên TKB ghi là H2xx.
+- Việc họ cố làm xong: xác nhận buổi học có thực sự ở phòng H2xx hay đã gộp/chuyển sang H209 hoặc H210.
+- Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ: xem TKB rồi dò lại thông tin đổi/gộp; một số người chọn tình huống thông tin phòng nằm rải rác hoặc phải dò xem hôm nay đã đổi/gộp chưa. Khảo sát không xác định từng nguồn, thời gian dò, hay lý do họ vẫn dùng cách hiện tại.
+- Pain (KHÔNG chữ AI): học viên tìm được phòng H2xx trên TKB nhưng không chắc buổi học còn ở đó hay đã gộp sang H209/H210, nên lo đến phòng ghi trên lịch mà không có lớp. Khảo sát ghi nhận nỗi lo / tình huống được chọn, không xác minh có ai thực sự đến phòng trống.
+- Bằng chứng — số chính + kết luận (chi tiết: `evidence/summary.md`, cách đếm: `evidence/data-mining.md`): 23 phản hồi, gồm 22 học viên L3A/L3B và 1 Lab Coach; nhóm xác nhận 20 người ngoài nhóm. Trong 22 học viên, 6 (27%) chọn tình huống lịch ghi phòng lẻ H2xx nhưng thực tế gộp sang H209/H210; 8 (36%) chọn bị nhầm phòng hoặc mất thời gian dò lại khi xem TKB lý thuyết; 4 (18%) chọn thông tin phòng nằm rải rác. Đây là câu chọn tối đa 2 về tình huống thường gặp, không phải số lần/tháng. Kết luận: có tín hiệu về bất an khi xác nhận phòng lý thuyết, nhưng chưa đo tần suất, thời gian hay số lần đến nhầm phòng; chưa phỏng vấn và chưa tách được 20 người ngoài nhóm theo từng dòng.
 
 ## §2. Impact & quyết định chọn *(guide 1.3)*
 
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+| Xác nhận buổi học còn ở H2xx hay đã gộp sang H209/H210 (học viên) | 6/22 chọn tình huống gộp phòng; 8/22 chọn nhầm phòng / dò lại (có thể trùng) | Khảo sát không hỏi số lần/tháng cho phòng lý thuyết | Khảo sát không hỏi thời gian dò / xác nhận | Chưa thể tính impact/tháng từ dữ liệu khảo sát hiện có | Demo §4 hỗ trợ người vận hành tạo bản đánh dấu; cần nguồn gộp đáng tin cậy và đầu ra để học viên xác nhận | **Có — đúng pain phòng lý thuyết** |
+| Dò nhiều nguồn để biết phòng lý thuyết nào mới nhất | 4/22 chọn thông tin phòng rải rác | Không hỏi số lần / tháng | Chưa được đo | Chưa đủ dữ liệu tính | Có thể là một phần của luồng xác nhận trên | Không tách thành hướng riêng |
+| Tra phòng thực hành / ca lab | 11/22 báo gặp khó ít nhất một lần trong tuần ở câu hỏi riêng về thực hành; nhóm xác nhận đây không phải pain ưu tiên | Có hỏi tần suất tuần cho thực hành, nhưng không dùng để ước tính pain phòng lý thuyết | Không áp dụng cho hướng chọn | Không dùng tính impact phòng lý thuyết | Ngoài phạm vi ưu tiên của nhóm | **Không chọn — nhóm xác nhận thực hành dễ, không phải vấn đề cần giải** |
 
 - **Impact / tháng** của hướng chọn = __ người × __ lần × __ phút = __ — nguồn từng thừa số: __ (không có nguồn thì ghi rõ *(tự ước tính)*)
 - Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá):
