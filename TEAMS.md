@@ -11,10 +11,10 @@
 
 | STT | Họ và tên | Mã học viên | Vai trò | Phần việc chính |
 |---|---|---|---|---|
-| 1 | Nguyễn Văn Anh Trung | 2A202603903 | Đội trưởng | ____ |
-| 2 | Triệu Tuấn Minh | 2A202604123 | Thành viên | ____ |
-| 3 | Đỗ Quang Vinh | 2A202604122 | Thành viên | ____ |
-|4|Trần Văn Tuấn|2A202604092|Thành viên|
+| 1 | Nguyễn Văn Anh Trung | 2A202603903 | Đội trưởng | Canvas, spec §4–§7 và §10, codebase/tools.py + agent.py, phát form khảo sát, nộp checkpoint |
+| 2 | Triệu Tuấn Minh | 2A202604123 | Thành viên | Khảo sát + đếm buổi lệch phòng (evidence/), spec §0–§2, codebase/ai.py, slides + reflection |
+| 3 | Đỗ Quang Vinh | 2A202604122 | Thành viên | Spec §3 (giải pháp tương tự) và §9 (rủi ro & an toàn) |
+| 4 | Trần Văn Tuấn | 2A202604092 | Thành viên | eval/benchmark.csv + metric_spec.yaml, data/DATA_CARD.md, trang HTML đánh dấu, chạy eval + mô phỏng chi phí (cost/) |
 
 **Quy tắc điền**
 - **Lớp:** `L3A` hoặc `L3B`. **Track:** một chữ `A` (EdTech), `B` (Y tế), `C` (Du lịch), `D` (Thương mại điện tử), `E` (Tài chính) hoặc `F` (Làn khác). **Link repo:** link GitHub công khai của nhóm.

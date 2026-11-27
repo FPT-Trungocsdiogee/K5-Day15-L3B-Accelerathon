@@ -1,9 +1,9 @@
-# AI SPEC — [Tên lát cắt] · Nhóm [tên nhóm] · Phòng [XXX] · Zone [X]
+# AI SPEC — Đánh dấu buổi lý thuyết đổi phòng sang H209/H210 trên TKB · Nhóm Accelerathon · Phòng D305 · Zone 2
 
 > Mốc nộp: §7 chốt chuẩn "đạt" tại **CP2 19:30 Thứ Sáu 27/11** · §0–§7 nộp **CP3 10:00 Thứ Bảy 28/11** · đủ §0–§10 **CP4 14:30 Thứ Bảy 28/11** · §10 changelog ghi tiếp đến **23:59 Thứ Bảy 28/11**.
 > Đầu mỗi mục ghi bước guide (`02-guide.md` trong repo đề) chỉ cách điền. Mỗi mục ngắn, có số và nguồn; chi tiết để ở file được trỏ tới. Xoá dòng hướng dẫn trong ngoặc vuông khi điền xong.
 
-Track: [ ] A · [ ] B · [ ] C · [ ] D · [ ] E — bài toán: [đề gợi ý trong file track, hoặc bài toán nhóm tự mở rộng] __
+Track: [x] A · [ ] B · [ ] C · [ ] D · [ ] E — bài toán: nhóm tự mở rộng — trang thời khóa biểu HTML ghi các buổi lý thuyết rải rác ở nhiều phòng lẻ H2xx, trong khi thực tế lớp đã gộp về 2 phòng lớn H209 / H210; đối chiếu và đánh dấu buổi bị đổi phòng cho người vận hành lớp kiểm tra lại trước khi báo học viên.
 Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 
 ## §0. Hiện tại việc này diễn ra thế nào *(guide 1.1)*
@@ -33,28 +33,58 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 - [sản phẩm / tính năng gần giống]: một điều đáng học · một điều đáng né · mình khác gì
 
 ## §4. Thiết kế *(guide 2.2, 3.2)*
-- **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả):
+- **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): **Người vận hành lớp** mở trang thời khóa biểu (TKB) HTML của **một ngày học lý thuyết mẫu** → AI **đối chiếu** từng buổi đang ghi phòng lẻ H2xx với thông tin gộp lớp về H209/H210 và **quyết định** buổi đó *đổi phòng (→ H209 hay H210)* · *giữ nguyên* · hay *chưa chắc* → trả về **bản nháp TKB đã đánh dấu rõ các buổi đổi phòng kèm căn cứ**, để người vận hành kiểm tra lại đối chiếu và duyệt trước khi báo học viên.
 - Không làm (≥3 điều):
-- **Sơ đồ** (ảnh / Mermaid / draw.io): [chèn ở đây]
-- **Hình dạng:** [ ] workflow cố định · [ ] một agent · [ ] nhiều agent — 2 dòng lý do, và vì sao **không** chọn hình dạng phức tạp hơn:
+  1. Không sửa TKB gốc, không ghi đè file / hệ thống TKB của trường.
+  2. Không gửi thông báo cho học viên (không nhắn nhóm chat, không email) — chỉ tạo bản nháp.
+  3. Không xử lý buổi thực hành, không xử lý nhiều ngày / cả tuần — chỉ các buổi lý thuyết của **một ngày mẫu**.
+  4. Không tự xếp phòng mới hay giải quyết trùng phòng (vd hai lớp cùng giờ cùng muốn H209) — chỉ đánh dấu "chưa chắc" để người quyết.
+  5. Không đọc TKB trực tiếp từ hệ thống của trường — dùng file HTML lưu sẵn trong `data/`.
+- **Sơ đồ** (Mermaid):
+
+  ```mermaid
+  flowchart TD
+      U["Người vận hành lớp<br/>chọn ngày học lý thuyết mẫu"] --> T1["parse_timetable<br/>đọc TKB HTML → danh sách buổi"]
+      T1 --> F{"Buổi lý thuyết<br/>ghi phòng H2xx?"}
+      F -- "Không (thực hành / đã ở H209-H210)" --> K["Giữ nguyên"]
+      F -- "Có" --> T2["lookup_merged_room<br/>tra thông tin gộp lớp → đoạn căn cứ có mã"]
+      T2 --> M["Model đối chiếu từng buổi<br/>với đoạn căn cứ"]
+      M --> D{"Có căn cứ rõ?"}
+      D -- "Có" --> C["Đổi phòng → H209 / H210<br/>+ mã căn cứ"]
+      D -- "Không / mâu thuẫn" --> X["Chưa chắc — cần người kiểm<br/>(không đoán phòng)"]
+      K --> R["render_marked_timetable<br/>bản nháp TKB đánh dấu 3 màu + cột căn cứ"]
+      C --> R
+      X --> R
+      R --> H["NGƯỜI VẬN HÀNH DUYỆT<br/>kiểm lại từng dòng đánh dấu"]
+      H -- "Duyệt" --> O["Người vận hành tự báo học viên<br/>(ngoài hệ thống)"]
+      H -- "Sửa" --> R
+  ```
+
+- **Hình dạng:** [x] workflow cố định · [ ] một agent · [ ] nhiều agent — Các bước luôn giống nhau và theo đúng thứ tự (đọc TKB → tra thông tin gộp → đối chiếu → đánh dấu), model chỉ làm một việc là quyết định từng buổi dựa trên căn cứ đã tra sẵn. **Không** chọn agent vì không có bước nào cần AI tự chọn công cụ tiếp theo; thêm vòng lặp agent chỉ tăng chi phí và khó kiểm, trong khi rủi ro chính (đánh dấu sai phòng) được chặn tốt hơn bằng luồng cố định + người duyệt.
 - **AI dựa vào đâu** — mỗi công cụ (khớp `codebase/tools.py`):
 
   | Công cụ | Input | Output | Tác động ra ngoài? |
   |---|---|---|---|
-  |  |  |  |  |
+  | `parse_timetable` | ngày học mẫu (str) | danh sách buổi `{ma_buoi, gio, lop, mon, loai, phong_tkb}` đọc từ file TKB HTML trong `data/` | Không — chỉ đọc |
+  | `lookup_merged_room` | một buổi (`lop`, `gio`, `mon`, `phong_tkb`) | danh sách đoạn thông tin gộp phòng `{code, text}` liên quan (rỗng nếu không có) | Không — chỉ đọc |
+  | `render_marked_timetable` | danh sách quyết định `{ma_buoi, trang_thai, phong_moi, can_cu}` | trang TKB HTML **bản nháp** đánh dấu 3 trạng thái + cột căn cứ, gắn nhãn "chờ duyệt" | Không — chỉ tạo bản nháp, không ghi đè TKB gốc, không gửi |
 
-- **Mức tự động:** [ ] AI gợi ý, người quyết · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — lý do (sai thì ai chịu gì, sửa đắt hay rẻ):
-- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì):
-- **Chỗ người duyệt** (việc AI không được tự làm):
+- **Mức tự động:** [x] AI gợi ý, người quyết · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — lý do: sai một dòng là cả lớp (hàng chục học viên) đi nhầm phòng / vào trễ, người vận hành mất uy tín; bắt lỗi trên bản nháp trước khi báo thì rẻ, sửa sau khi đã thông báo cả lớp thì đắt (phải nhắn đính chính, học viên đã di chuyển).
+- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì): rủi ro lớn nhất là **đánh dấu đổi phòng sai (sai H209/H210, hoặc đổi một buổi không bị gộp)**. Chặn ở bước "Có căn cứ rõ?": mỗi quyết định "đổi phòng" phải kèm mã đoạn căn cứ lấy từ `lookup_merged_room`; không có mã hoặc căn cứ mâu thuẫn → luồng ép về "chưa chắc", không cho model tự đoán. Cuối cùng chặn thêm ở bước người vận hành duyệt.
+- **Chỗ người duyệt** (việc AI không được tự làm): duyệt bản nháp TKB đã đánh dấu trước khi dùng; quyết định các buổi "chưa chắc"; gửi thông báo đổi phòng cho học viên; sửa TKB gốc.
 - **Nguyên tắc thiết kế** (≥3, bắt buộc G10):
 
   | Nguyên tắc | Chỗ cụ thể trên sơ đồ / trong bản chạy thử |
   |---|---|
-  | G10 — thu hẹp phạm vi khi không chắc |  |
-  |  |  |
-  |  |  |
+  | G10 — thu hẹp phạm vi khi không chắc | Nhánh "Không / mâu thuẫn" → trạng thái **"Chưa chắc — cần người kiểm"**, không đoán H209 hay H210; yêu cầu ngoài lát cắt (buổi thực hành, cả tuần, gửi tin) → trả lời là ngoài phạm vi |
+  | Mọi khẳng định có căn cứ kiểm được | Cột "căn cứ" trên bản nháp ghi mã dòng TKB + mã đoạn thông tin gộp cho từng buổi được đánh dấu đổi phòng |
+  | Người duyệt trước mọi tác động ra ngoài | Bản nháp gắn nhãn "chờ duyệt"; không công cụ nào gửi tin hay ghi đè TKB gốc |
+  | Hiện rõ mức chắc chắn | 3 trạng thái có màu riêng trên trang: đổi phòng · giữ nguyên · chưa chắc |
 
 - Phần nào còn giả (công cụ trả dữ liệu giả, model chế độ giả…) — ghi rõ, không giả làm thật:
+  - `codebase/tools.py` hiện vẫn là công cụ ví dụ `search_example`; 3 công cụ ở bảng trên **chưa code** (Vinh làm, đến CP3).
+  - File TKB HTML một ngày mẫu và file thông tin gộp phòng H209/H210 **chưa có trong `data/`** — sẽ lưu bản đã ẩn danh / viết lại và mô tả ở `data/DATA_CARD.md`.
+  - `codebase/ai.py` đang ở chế độ giả cho đến khi nối model (xem `docs/connect-model.md`).
 
 ## §5. Chỗ khó — 4 lớp + ≥6 kịch bản + 2 tấn công *(guide 2.3)*
 

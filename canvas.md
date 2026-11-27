@@ -1,4 +1,4 @@
-# Canvas — [tên nhóm] · Track [A–F]
+# Canvas — Accelerathon · Track A
 
 > Điền ở guide bước 1.4. CP1 17:00 Thứ Sáu 27/11: nộp bản đầu, đủ 7 dòng (dòng 4 được ghi giả thuyết + nguồn sẽ kiểm).
 > CP2 19:30 Thứ Sáu 27/11: cập nhật (số bằng chứng đầu, lát cắt đã chốt) và điền dòng "Đã đổi gì so với CP1".
@@ -6,11 +6,12 @@
 
 | # | Dòng | Nhóm điền |
 |---|---|---|
-| 1 | Track + lát cắt dự kiến | |
-| 2 | Người dùng chính (một vai cụ thể — không phải "học viên nói chung") | |
-| 3 | Pain một câu: ai — đang làm gì — vướng đâu — hậu quả | |
-| 4 | Bằng chứng đầu — CP1: giả thuyết + nguồn sẽ kiểm · CP2: số đầu tiên + 1 trích dẫn | |
-| 5 | **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả) | |
-| 6 | AI tự làm đến đâu + 1 dòng lý do: sai thì ai chịu gì | |
-| 7 | Phân công có tên | |
-| — | *(CP2)* Đã đổi gì so với CP1 | |
+| 1 | Track + lát cắt dự kiến | **Track A (EdTech).** Đối chiếu phòng học trên trang thời khóa biểu HTML: các buổi lý thuyết đang ghi rải rác ở nhiều phòng lẻ H2xx, trong khi thực tế đã gộp lớp về 2 phòng lớn **H209 / H210** → đánh dấu buổi bị đổi phòng cho **một ngày học lý thuyết mẫu**. |
+| 2 | Người dùng chính (một vai cụ thể — không phải "học viên nói chung") | **Người vận hành lớp** (trợ giảng / điều phối phụ trách thời khóa biểu của khoá) — người phải trả lời "học phòng nào?" và báo cho học viên. Học viên đi học lý thuyết là người hưởng lợi thứ hai, không phải người dùng chính của lát cắt. |
+| 3 | Pain một câu: ai — đang làm gì — vướng đâu — hậu quả | Người vận hành lớp **đang** thông báo phòng học lý thuyết cho học viên từ trang TKB HTML, **vướng** ở chỗ TKB vẫn ghi phòng lẻ H2xx còn thực tế đã gộp về H209/H210 và phải dò tay từng buổi, **hậu quả** là học viên đi nhầm phòng / vào trễ đầu giờ và người vận hành bị hỏi lại phòng nhiều lần trong nhóm chat *(giả thuyết — chờ bằng chứng ở dòng 4)*. |
+| 4 | Bằng chứng đầu — CP1: giả thuyết + nguồn sẽ kiểm · CP2: số đầu tiên + 1 trích dẫn | **CP1 — giả thuyết:** phần lớn buổi lý thuyết trên TKB HTML ghi phòng H2xx khác H209/H210, và học viên từng nhầm/hỏi lại phòng. **Mình đúng nếu thấy:** ≥40% người trả lời khảo sát kể được ≥1 lần nhầm hoặc phải hỏi lại phòng học lý thuyết trong 2 tuần qua · ≥50% buổi lý thuyết trong 1 tuần TKB ghi phòng khác H209/H210 *(ngưỡng tự đặt)*. **Nguồn sẽ kiểm:** (1) **khảo sát ≥20 người** (học viên + người vận hành, có 1 câu hỏi mở để lấy trích dẫn) — nguồn chính · (2) đào data — đếm số buổi lý thuyết lệch phòng trên trang TKB HTML 1 tuần — nguồn kiểm lại. **CP2:** __/__ người trả lời từng nhầm/hỏi lại phòng · __ buổi lệch / __ buổi lý thuyết · trích dẫn: "__" |
+| 5 | **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả) | **Người vận hành lớp** mở trang TKB HTML của **một ngày học lý thuyết mẫu** → AI **đối chiếu** từng buổi có phòng lẻ H2xx với thông tin gộp H209/H210 và **quyết định** buổi đó *đổi phòng (→ H209 hay H210)* · *giữ nguyên* · hay *chưa chắc* → trả về **trang TKB đã đánh dấu rõ các buổi đổi phòng kèm căn cứ** để người vận hành kiểm tra lại đối chiếu trước khi báo học viên. |
+| 6 | AI tự làm đến đâu + 1 dòng lý do: sai thì ai chịu gì | **AI gợi ý, người quyết:** AI chỉ đọc TKB + bảng gộp phòng, đánh dấu buổi đổi phòng kèm dòng căn cứ; buổi không khớp được với thông tin gộp thì ghi "chưa chắc — cần người kiểm", không tự đoán phòng. AI **không** sửa TKB gốc, **không** gửi thông báo — chỉ tạo bản nháp chờ người vận hành duyệt. **Lý do:** sai thì cả lớp (hàng chục học viên) đi nhầm phòng / trễ giờ và người vận hành mất uy tín; bắt lỗi trước khi gửi thì rẻ, sửa sau khi đã thông báo thì đắt. |
+| 7 | Phân công có tên | **Nguyễn Văn Anh Trung** (đội trưởng): chốt lát cắt, `canvas.md`, `spec.md` §4/§7, ghép luồng `codebase/agent.py`, nộp checkpoint, hỗ trợ Minh phát form khảo sát · **Triệu Tuấn Minh**: bằng chứng — khảo sát ≥20 người (soạn form, gửi, tổng hợp), đếm buổi lệch phòng trên TKB HTML, `evidence/` · **Đỗ Quang Vinh**: `codebase/tools.py` (đọc TKB HTML, tra bảng gộp H209/H210), `ai.py` nối model, trang hiển thị đánh dấu · **Trần Văn Tuấn**: `eval/benchmark.csv` + `metric_spec.yaml`, `data/DATA_CARD.md`, `cost/` mô phỏng chi phí. Tuấn lấy câu trả lời khảo sát thật làm câu thử. Cặp kiểm chéo: Minh ↔ Tuấn (bằng chứng → câu thử) · Trung ↔ Vinh (spec → code). |
+|____|(CP2) Đã đổi gì so với CP1|Toàn bộ nội dung của canvas này, vì CP1 không kịp điền canvas.
+
