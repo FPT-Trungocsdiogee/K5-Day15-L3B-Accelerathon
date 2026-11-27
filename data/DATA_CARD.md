@@ -19,12 +19,13 @@ Ba file cùng một nguồn, ba cách trình bày: `ai20k_schedule.json` (đầy
 
 **Lưu ý commit:** file CSV / JSON có mã học viên thật; trước khi nộp / công khai repo, nhóm xác nhận với BTC được phép giữ trong repo, hoặc thay bằng bản cắt ngắn / mã giả.
 
-## Dataset 2 · Thông tin gộp phòng H209/H210 — bản mẫu GIẢ (`merged_rooms.sample.json`)
+## Dataset 2 · Thông tin gộp phòng H209/H210 (`eval/merged_room_fixture.csv`)
 
 | | |
 |---|---|
-| Dùng để làm gì | chỉ để tự kiểm / demo công cụ `lookup_merged_room` và lớp chặn trong `codebase/agent.py` (`python codebase/agent.py --selftest`) |
-| Từ đâu | nhóm tự viết, **không** phải thông báo của BTC. Mỗi câu ghi "(GIẢ)" |
-| Số dòng / số đoạn | 4 đoạn (GP-01…GP-04), đều cho ngày 13/11; GP-03 và GP-04 cố ý mâu thuẫn để kiểm nhánh "chưa chắc" |
-| Nhãn | `synthetic` |
-| Giới hạn | không dùng cho lượt `run.py eval` / `simulate` tính điểm. Thông tin gộp thật để ở `data/merged_rooms.json` (cùng định dạng, kèm nguồn) — **chưa có** |
+| Dùng để làm gì | nguồn của công cụ `lookup_merged_room` (mã căn cứ `GOP-xx`) và đáp án `can_cu` trong `eval/benchmark.csv` |
+| Từ đâu | `eval/benchmark.csv` ghi nguồn là `tu_viet: merged_room_fixture.csv` (nhóm tự viết). Cột `text` có câu "BTC xác nhận: …" — **nhóm cần xác nhận**: nếu là tự viết thì đó không phải trích dẫn thông báo thật của BTC |
+| Số dòng / số đoạn | 12 dòng, 5 mã: GOP-01 (L3A 06–16/11) · GOP-02 (L3B 06–18/11) · GOP-03 (L2A 19–20/11, giữ phòng H201) · GOP-04 (L3B 16/11, H204 → H210, mâu thuẫn với GOP-02) · GOP-05 (L3A 17/11, **dự kiến**) |
+| Cột | `code, lop, tu_ngay, den_ngay, do_chac (xac_nhan / du_kien), phong_cu, phong_moi (H209 / H210 / GIU), text` — mỗi dòng một cặp phòng cũ → phòng mới |
+| Nhãn | tự viết (chưa xác nhận là thông báo thật) |
+| Giới hạn | không phải thông báo đổi phòng thật; kết quả đánh dấu chỉ đúng trong phạm vi các quy tắc này. Dùng dữ liệu thật: đặt `MERGED_ROOMS_FILE` trỏ tới file cùng định dạng, kèm nguồn |
