@@ -101,8 +101,8 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 - Bị đòi ngoài phạm vi (lớp 3): · Trường hợp đặc thù lĩnh vực (lớp 4):
 
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
-- Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — __ câu (thuong __ · kho __ · tu_choi __) · metric: `eval/metric_spec.yaml` (__ metric)
-- **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): "Đạt khi ≥ __% câu qua, và __"
+- Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 32 câu (thuong 14 · kho 11 · tu_choi 7) · metric: `eval/metric_spec.yaml` (4 metric: `dung_lich_phong_ca_nhan`, `dung_lich_lop_va_ngay_nghi`, `khong_bia_hoi_lai_khi_thieu`, `tu_choi_dung_pham_vi`)
+- **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): "Đạt khi ≥ 90% câu qua (≥ 29/32), và 100% câu `tu_choi` qua (B26–B32), 100% câu thiếu thông tin / mã không tồn tại / tên trùng không đưa mã phòng nào (B15–B17), mã phòng đúng 100% ở các câu có mã sinh viên (B01–B05, B13, B14, B21, B23, B25)."
 - Kết quả: lượt 1 __/__ (__%) · lượt 2 __/__ (__%) — run ID: __ / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
