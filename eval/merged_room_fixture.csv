@@ -1,0 +1,13 @@
+﻿code,lop,tu_ngay,den_ngay,do_chac,phong_cu,phong_moi,text
+GOP-01,L3A,2026-11-06,2026-11-16,xac_nhan,H203,H209,"BTC xác nhận: từ 06/11 đến 16/11, các buổi lý thuyết lớp L3A không dùng phòng lẻ. Học viên xếp ở H203 và H201 học tại H209; học viên xếp ở H204 và H207 học tại H210."
+GOP-01,L3A,2026-11-06,2026-11-16,xac_nhan,H201,H209,"BTC xác nhận: từ 06/11 đến 16/11, các buổi lý thuyết lớp L3A không dùng phòng lẻ. Học viên xếp ở H203 và H201 học tại H209; học viên xếp ở H204 và H207 học tại H210."
+GOP-01,L3A,2026-11-06,2026-11-16,xac_nhan,H204,H210,"BTC xác nhận: từ 06/11 đến 16/11, các buổi lý thuyết lớp L3A không dùng phòng lẻ. Học viên xếp ở H203 và H201 học tại H209; học viên xếp ở H204 và H207 học tại H210."
+GOP-01,L3A,2026-11-06,2026-11-16,xac_nhan,H207,H210,"BTC xác nhận: từ 06/11 đến 16/11, các buổi lý thuyết lớp L3A không dùng phòng lẻ. Học viên xếp ở H203 và H201 học tại H209; học viên xếp ở H204 và H207 học tại H210."
+GOP-02,L3B,2026-11-06,2026-11-18,xac_nhan,H203,H209,"BTC xác nhận: từ 06/11 đến 18/11, các buổi lý thuyết lớp L3B gộp về H209 và H210. H203 và H204 chuyển sang H209; H207 và H208 chuyển sang H210."
+GOP-02,L3B,2026-11-06,2026-11-18,xac_nhan,H204,H209,"BTC xác nhận: từ 06/11 đến 18/11, các buổi lý thuyết lớp L3B gộp về H209 và H210. H203 và H204 chuyển sang H209; H207 và H208 chuyển sang H210."
+GOP-02,L3B,2026-11-06,2026-11-18,xac_nhan,H207,H210,"BTC xác nhận: từ 06/11 đến 18/11, các buổi lý thuyết lớp L3B gộp về H209 và H210. H203 và H204 chuyển sang H209; H207 và H208 chuyển sang H210."
+GOP-02,L3B,2026-11-06,2026-11-18,xac_nhan,H208,H210,"BTC xác nhận: từ 06/11 đến 18/11, các buổi lý thuyết lớp L3B gộp về H209 và H210. H203 và H204 chuyển sang H209; H207 và H208 chuyển sang H210."
+GOP-03,L2A,2026-11-19,2026-11-20,xac_nhan,H201,GIU,"BTC xác nhận: ngày 19/11 và 20/11, buổi lý thuyết lớp L2A vẫn học ở H201 như TKB, không gộp."
+GOP-04,L3B,2026-11-16,2026-11-16,xac_nhan,H204,H210,"Ghi chú vận hành: ngày 16/11, học viên L3B xếp ở H204 chuyển sang H210."
+GOP-05,L3A,2026-11-17,2026-11-17,du_kien,H203,H209,"Dự kiến, chờ BTC xác nhận: ngày 17/11 buổi lý thuyết L3A có thể chuyển H203 sang H209 và H207 sang H210."
+GOP-05,L3A,2026-11-17,2026-11-17,du_kien,H207,H210,"Dự kiến, chờ BTC xác nhận: ngày 17/11 buổi lý thuyết L3A có thể chuyển H203 sang H209 và H207 sang H210."
