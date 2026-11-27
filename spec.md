@@ -33,57 +33,58 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 - [sản phẩm / tính năng gần giống]: một điều đáng học · một điều đáng né · mình khác gì
 
 ## §4. Thiết kế *(guide 2.2, 3.2)*
-- **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): **Người vận hành lớp** mở trang thời khóa biểu (TKB) HTML của **một ngày học lý thuyết mẫu** → AI **đối chiếu** từng buổi đang ghi phòng lẻ H2xx với thông tin gộp lớp về H209/H210 và **quyết định** buổi đó *đổi phòng (→ H209 hay H210)* · *giữ nguyên* · hay *chưa chắc* → trả về **bản nháp TKB đã đánh dấu rõ các buổi đổi phòng kèm căn cứ**, để người vận hành kiểm tra lại đối chiếu và duyệt trước khi báo học viên.
+- **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): **Học viên L3A/L3B** nhập mã học viên + **một ngày học lý thuyết** → AI **đối chiếu** từng buổi lý thuyết của học viên đó đang ghi phòng lẻ H2xx với thông tin gộp lớp về H209/H210 và **quyết định** buổi đó *đổi phòng (→ H209 hay H210)* · *giữ nguyên* · hay *chưa chắc* → trả về **TKB ngày đó của học viên, đánh dấu rõ buổi đổi phòng (gạch phòng cũ, mũi tên sang phòng mới — theo mong muốn R22 ở `evidence/summary.md`) kèm mã căn cứ**, để học viên tự kiểm tra lại đối chiếu trước khi đi học.
 - Không làm (≥3 điều):
   1. Không sửa TKB gốc, không ghi đè file / hệ thống TKB của trường.
-  2. Không gửi thông báo cho học viên (không nhắn nhóm chat, không email) — chỉ tạo bản nháp.
-  3. Không xử lý buổi thực hành, không xử lý nhiều ngày / cả tuần — chỉ các buổi lý thuyết của **một ngày mẫu**.
-  4. Không tự xếp phòng mới hay giải quyết trùng phòng (vd hai lớp cùng giờ cùng muốn H209) — chỉ đánh dấu "chưa chắc" để người quyết.
-  5. Không đọc TKB trực tiếp từ hệ thống của trường — dùng file HTML lưu sẵn trong `data/`.
+  2. Không gửi thông báo cho ai (không nhắn nhóm chat, không email) — chỉ hiển thị cho học viên đang hỏi.
+  3. Không xử lý buổi thực hành, không xử lý nhiều ngày / cả tuần — chỉ các buổi lý thuyết của **một ngày**.
+  4. Không tự xếp phòng mới hay giải quyết trùng phòng — không đủ căn cứ thì đánh dấu "chưa chắc" và hướng học viên hỏi người vận hành lớp.
+  5. Không trả lịch / phòng của học viên khác, không liệt kê danh sách mã học viên — chỉ lịch của mã đang hỏi.
+  6. Không đọc TKB trực tiếp từ hệ thống của trường — dùng file lưu sẵn trong `data/`.
 - **Sơ đồ** (Mermaid):
 
   ```mermaid
   flowchart TD
-      U["Người vận hành lớp<br/>chọn ngày học lý thuyết mẫu"] --> T1["parse_timetable<br/>đọc TKB HTML → danh sách buổi"]
+      U["Học viên<br/>nhập mã học viên + ngày học lý thuyết"] --> T1["parse_timetable<br/>đọc TKB → các buổi của học viên trong ngày"]
       T1 --> F{"Buổi lý thuyết<br/>ghi phòng H2xx?"}
-      F -- "Không (thực hành / đã ở H209-H210)" --> K["Giữ nguyên"]
+      F -- "Không (thực hành / online / đã ở H209-H210)" --> K["Giữ nguyên"]
       F -- "Có" --> T2["lookup_merged_room<br/>tra thông tin gộp lớp → đoạn căn cứ có mã"]
       T2 --> M["Model đối chiếu từng buổi<br/>với đoạn căn cứ"]
       M --> D{"Có căn cứ rõ?"}
       D -- "Có" --> C["Đổi phòng → H209 / H210<br/>+ mã căn cứ"]
-      D -- "Không / mâu thuẫn" --> X["Chưa chắc — cần người kiểm<br/>(không đoán phòng)"]
-      K --> R["render_marked_timetable<br/>bản nháp TKB đánh dấu 3 màu + cột căn cứ"]
+      D -- "Không / mâu thuẫn" --> X["Chưa chắc — hỏi người vận hành lớp<br/>(không đoán phòng)"]
+      K --> R["render_marked_timetable<br/>TKB ngày của học viên: gạch phòng cũ → phòng mới, 3 màu + cột căn cứ"]
       C --> R
       X --> R
-      R --> H["NGƯỜI VẬN HÀNH DUYỆT<br/>kiểm lại từng dòng đánh dấu"]
-      H -- "Duyệt" --> O["Người vận hành tự báo học viên<br/>(ngoài hệ thống)"]
-      H -- "Sửa" --> R
+      R --> H["HỌC VIÊN KIỂM LẠI<br/>mở mã căn cứ của từng buổi đổi phòng"]
+      H -- "Khớp" --> O["Học viên đến đúng phòng"]
+      H -- "Chưa chắc / thấy sai" --> Q["Hỏi người vận hành lớp<br/>(ngoài hệ thống)"]
   ```
 
-- **Hình dạng:** [x] workflow cố định · [ ] một agent · [ ] nhiều agent — Các bước luôn giống nhau và theo đúng thứ tự (đọc TKB → tra thông tin gộp → đối chiếu → đánh dấu), model chỉ làm một việc là quyết định từng buổi dựa trên căn cứ đã tra sẵn. **Không** chọn agent vì không có bước nào cần AI tự chọn công cụ tiếp theo; thêm vòng lặp agent chỉ tăng chi phí và khó kiểm, trong khi rủi ro chính (đánh dấu sai phòng) được chặn tốt hơn bằng luồng cố định + người duyệt.
+- **Hình dạng:** [x] workflow cố định · [ ] một agent · [ ] nhiều agent — Các bước luôn giống nhau và theo đúng thứ tự (đọc TKB của học viên → tra thông tin gộp → đối chiếu → đánh dấu), model chỉ làm một việc là quyết định từng buổi dựa trên căn cứ đã tra sẵn. **Không** chọn agent vì không có bước nào cần AI tự chọn công cụ tiếp theo; thêm vòng lặp agent chỉ tăng chi phí và khó kiểm, trong khi rủi ro chính (đánh dấu sai phòng) được chặn tốt hơn bằng luồng cố định + bắt buộc có mã căn cứ.
 - **AI dựa vào đâu** — mỗi công cụ (khớp `codebase/tools.py`):
 
   | Công cụ | Input | Output | Tác động ra ngoài? |
   |---|---|---|---|
-  | `parse_timetable` | ngày học mẫu (str) | danh sách buổi `{ma_buoi, gio, lop, mon, loai, phong_tkb}` đọc từ file TKB HTML trong `data/` | Không — chỉ đọc |
+  | `parse_timetable` | mã học viên (str) + ngày (str) | danh sách buổi của học viên đó trong ngày `{ma_buoi, gio, lop, mon, loai, phong_tkb}` đọc từ file TKB trong `data/`; rỗng nếu không có mã / ngày | Không — chỉ đọc |
   | `lookup_merged_room` | một buổi (`lop`, `gio`, `mon`, `phong_tkb`) | danh sách đoạn thông tin gộp phòng `{code, text}` liên quan (rỗng nếu không có) | Không — chỉ đọc |
-  | `render_marked_timetable` | danh sách quyết định `{ma_buoi, trang_thai, phong_moi, can_cu}` | trang TKB HTML **bản nháp** đánh dấu 3 trạng thái + cột căn cứ, gắn nhãn "chờ duyệt" | Không — chỉ tạo bản nháp, không ghi đè TKB gốc, không gửi |
+  | `render_marked_timetable` | danh sách quyết định `{ma_buoi, trang_thai, phong_cu, phong_moi, can_cu}` | TKB ngày của học viên: buổi đổi phòng hiện ~~phòng cũ~~ → phòng mới, 3 trạng thái có màu + cột căn cứ | Không — chỉ hiển thị cho học viên đang hỏi, không ghi đè TKB gốc, không gửi |
 
-- **Mức tự động:** [x] AI gợi ý, người quyết · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — lý do: sai một dòng là cả lớp (hàng chục học viên) đi nhầm phòng / vào trễ, người vận hành mất uy tín; bắt lỗi trên bản nháp trước khi báo thì rẻ, sửa sau khi đã thông báo cả lớp thì đắt (phải nhắn đính chính, học viên đã di chuyển).
-- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì): rủi ro lớn nhất là **đánh dấu đổi phòng sai (sai H209/H210, hoặc đổi một buổi không bị gộp)**. Chặn ở bước "Có căn cứ rõ?": mỗi quyết định "đổi phòng" phải kèm mã đoạn căn cứ lấy từ `lookup_merged_room`; không có mã hoặc căn cứ mâu thuẫn → luồng ép về "chưa chắc", không cho model tự đoán. Cuối cùng chặn thêm ở bước người vận hành duyệt.
-- **Chỗ người duyệt** (việc AI không được tự làm): duyệt bản nháp TKB đã đánh dấu trước khi dùng; quyết định các buổi "chưa chắc"; gửi thông báo đổi phòng cho học viên; sửa TKB gốc.
+- **Mức tự động:** [x] AI gợi ý, người quyết · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — lý do: không có người vận hành duyệt trước, nên sai một dòng là học viên đến nhầm phòng / vào trễ. Vì vậy AI chỉ đánh dấu kèm căn cứ; học viên là người quyết đi phòng nào, và buổi "chưa chắc" được đẩy sang người vận hành lớp thay vì để AI đoán.
+- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì): rủi ro lớn nhất là **đánh dấu đổi phòng sai (sai H209/H210, hoặc đổi một buổi không bị gộp) khiến học viên đi nhầm phòng**. Chặn ở bước "Có căn cứ rõ?": mỗi quyết định "đổi phòng" phải kèm mã đoạn căn cứ lấy từ `lookup_merged_room`; không có mã hoặc căn cứ mâu thuẫn → luồng ép về "chưa chắc", không cho model tự đoán. Học viên thấy mã căn cứ trên từng dòng để tự kiểm lại.
+- **Chỗ người duyệt** (việc AI không được tự làm): học viên kiểm lại mã căn cứ trước khi đi; người vận hành lớp trả lời các buổi "chưa chắc"; gửi thông báo đổi phòng và sửa TKB gốc là việc của người vận hành, ngoài hệ thống.
 - **Nguyên tắc thiết kế** (≥3, bắt buộc G10):
 
   | Nguyên tắc | Chỗ cụ thể trên sơ đồ / trong bản chạy thử |
   |---|---|
-  | G10 — thu hẹp phạm vi khi không chắc | Nhánh "Không / mâu thuẫn" → trạng thái **"Chưa chắc — cần người kiểm"**, không đoán H209 hay H210; yêu cầu ngoài lát cắt (buổi thực hành, cả tuần, gửi tin) → trả lời là ngoài phạm vi |
-  | Mọi khẳng định có căn cứ kiểm được | Cột "căn cứ" trên bản nháp ghi mã dòng TKB + mã đoạn thông tin gộp cho từng buổi được đánh dấu đổi phòng |
-  | Người duyệt trước mọi tác động ra ngoài | Bản nháp gắn nhãn "chờ duyệt"; không công cụ nào gửi tin hay ghi đè TKB gốc |
-  | Hiện rõ mức chắc chắn | 3 trạng thái có màu riêng trên trang: đổi phòng · giữ nguyên · chưa chắc |
+  | G10 — thu hẹp phạm vi khi không chắc | Nhánh "Không / mâu thuẫn" → trạng thái **"Chưa chắc — hỏi người vận hành lớp"**, không đoán H209 hay H210; yêu cầu ngoài lát cắt (buổi thực hành, cả tuần, lịch người khác, gửi tin) → trả lời là ngoài phạm vi |
+  | Mọi khẳng định có căn cứ kiểm được | Cột "căn cứ" ghi mã buổi TKB + mã đoạn thông tin gộp cho từng buổi được đánh dấu đổi phòng |
+  | Không tác động ra ngoài, chỉ dữ liệu của chính người hỏi | Không công cụ nào gửi tin hay ghi đè TKB gốc; `parse_timetable` chỉ trả buổi của mã học viên đang hỏi |
+  | Hiện rõ mức chắc chắn | 3 trạng thái có màu riêng: đổi phòng (~~cũ~~ → mới) · giữ nguyên · chưa chắc |
 
 - Phần nào còn giả (công cụ trả dữ liệu giả, model chế độ giả…) — ghi rõ, không giả làm thật:
-  - `codebase/tools.py` hiện vẫn là công cụ ví dụ `search_example`; 3 công cụ ở bảng trên **chưa code** (Vinh làm, đến CP3).
-  - File TKB HTML một ngày mẫu và file thông tin gộp phòng H209/H210 **chưa có trong `data/`** — sẽ lưu bản đã ẩn danh / viết lại và mô tả ở `data/DATA_CARD.md`.
+  - `codebase/tools.py` đã có bản code 3 công cụ (chưa commit) nhưng theo lát cắt người vận hành cũ: `parse_timetable(ngay)` chưa nhận mã học viên, chưa lọc theo học viên — **cần sửa cho khớp bảng trên**.
+  - TKB đọc từ `data/ai20k_schedule.json`; thông tin gộp H209/H210 lấy từ `eval/merged_room_fixture.csv` (mã `GOP-xx`) — **cần ghi rõ fixture này là dữ liệu thật hay nhóm tự dựng** (mô tả ở `data/DATA_CARD.md`).
   - `codebase/ai.py` đang ở chế độ giả cho đến khi nối model (xem `docs/connect-model.md`).
 
 ## §5. Chỗ khó — 4 lớp + ≥6 kịch bản + 2 tấn công *(guide 2.3)*
@@ -125,7 +126,13 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
-|  |  |  |
+| 27/11 19:31 (`1f6ad85`) | §7: điền bộ câu thử (32 câu: thuong 14 · kho 11 · tu_choi 7), 4 metric trong `eval/metric_spec.yaml` và chuẩn "đạt". Commit lúc 19:31, sau mốc CP2 19:30 một phút | Chốt chuẩn "đạt" cho CP2. Chuẩn "đạt" và metric được viết cho bộ câu **tra lịch / phòng theo mã sinh viên** (bản `77f0042`) |
+| 27/11 23:15 (`01964e3`) | `eval/benchmark.csv`: viết lại cả 32 câu. Bỏ toàn bộ câu tra lịch / phòng theo mã sinh viên (vd "Mã SV …, 06/11 mình học LAB 1 ở phòng nào"), thay bằng câu "Đánh dấu buổi này. Lớp · ngày · buổi · TKB ghi phòng …" có đáp án `trang_thai / phong_moi / can_cu`, vẫn 14/11/7. Thêm `eval/merged_room_fixture.csv` (GOP-01…GOP-05, nguồn `tu_viet`) làm căn cứ gộp phòng | Bộ câu cũ kiểm một trợ lý tra lịch, không kiểm quyết định của lát cắt §4 (đổi phòng / giữ nguyên / chưa chắc, kèm căn cứ). Câu `kho` mới phủ: ngoài khoảng áp dụng, phòng dự phòng `H203*`, mâu thuẫn GOP-02 / GOP-04, căn cứ "dự kiến" GOP-05, bẫy dùng quy tắc của lớp khác |
+| 27/11 23:15 (`379f6aa`) | §0, §1, §2: điền từ khảo sát. Người dùng chính là học viên L3A/L3B; 23 phản hồi (22 học viên + 1 Lab Coach); 6/22 chọn tình huống gộp phòng, 8/22 nhầm phòng / dò lại, 4/22 thông tin phòng rải rác; bảng 3 hướng, loại hướng phòng thực hành | `evidence/summary.md`, cách đếm ở `evidence/data-mining.md` |
+| 28/11 (chưa commit) | §4: đổi người dùng của lát cắt từ **người vận hành lớp** sang **học viên L3A/L3B**. Input: mã học viên + một ngày học lý thuyết. Output: TKB ngày đó của chính học viên, buổi đổi phòng hiện ~~phòng cũ~~ → phòng mới, kèm mã căn cứ. Sửa theo: "Không làm" (thêm #5: không trả lịch người khác, không liệt kê danh sách mã), sơ đồ (bỏ bước người vận hành duyệt; học viên tự kiểm, buổi "chưa chắc" thì hỏi người vận hành lớp), bảng công cụ (`parse_timetable` nhận thêm mã học viên, `render_marked_timetable` thêm `phong_cu`), mức tự động, chỗ chặn rủi ro, chỗ người duyệt, nguyên tắc thiết kế | Cho khớp người dùng ở §1 (bằng chứng đến từ học viên: 6/22, 8/22) và mong muốn hiển thị của R22 (`evidence/summary.md` mục 5: gạch phòng cũ, mũi tên sang phòng mới) |
+| 28/11 (chưa commit) | §4 "Phần nào còn giả": thay "3 công cụ chưa code" bằng tình trạng thật: đã có code nhưng theo lát cắt người vận hành cũ (`parse_timetable(ngay)` chưa nhận mã học viên); TKB đọc từ `data/ai20k_schedule.json`; căn cứ gộp lấy từ `eval/merged_room_fixture.csv`, cần ghi rõ nguồn trong `data/DATA_CARD.md` | Ghi đúng phần còn giả sau khi viết `codebase/tools.py`, `codebase/agent.py` |
+| 28/11 (chưa commit) | `codebase/tools.py`, `codebase/agent.py`: viết 3 công cụ + luồng cố định theo §4 (bản người vận hành). Thêm `data/merged_rooms.sample.json` (dữ liệu giả, `synthetic`) và mục Dataset 2 trong `data/DATA_CARD.md` | Thay công cụ ví dụ `search_example`. Dữ liệu giả chỉ dùng để tự kiểm (`python codebase/agent.py --selftest`), không dùng cho lượt tính điểm |
+| 28/11 (chưa commit) | `eval/benchmark.csv`: 32 → 30 câu (thuong 10 · kho 12 · tu_choi 8), đánh số lại B01–B30; 26 câu giữ lại không đổi nội dung. **Xoá 6 câu** (số theo bản `01964e3`): B02 L3A 13/11 LEC 6 (đổi phòng), B04 L3B 09/11 LEC 2 (đổi phòng), B08 L2B 19/11 LEC 10 chỉ ghi H210 (giữ nguyên), B14 L3A 16/11 LEC 8 (ngày cuối của GOP-01), B19 L3B 21/11 LEC 13 (ngoài khoảng GOP-02), B21 L2A 25/11 LEC 13 (ngoài khoảng GOP-03). **Thêm 4 câu** phía học viên: B27 "Mai mình học phòng nào nhỉ?" (hỏi lại mã), B28 tên trùng N.T.Cường (hỏi lại mã), B29 mã 2A209999999 không tồn tại, B30 xin danh sách mã + phòng cả lớp L3A (`tu_choi`) | `python run.py check` báo "CP3 cần 20–30 câu (đang có 32)"; 4 câu mới kiểm đầu vào mã học viên của lát cắt §4 mới. Chưa có lượt eval tính điểm nào chạy trên 6 câu bị xoá (chỉ có `eval/run-try.csv`) |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

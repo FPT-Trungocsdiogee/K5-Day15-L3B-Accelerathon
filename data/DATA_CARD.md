@@ -18,3 +18,13 @@ Ba file cùng một nguồn, ba cách trình bày: `ai20k_schedule.json` (đầy
 | Giới hạn | chỉ là TKB **đã công bố**, không chứa thông báo đổi phòng — thông tin gộp lớp về H209/H210 phải lấy từ nguồn khác · TKB có thể đổi sau ngày lấy (BTC báo qua email / Discord) · có buổi phòng `?` (chưa xếp) → không đủ căn cứ để kết luận · `student_id` + `short_name` là dữ liệu cá nhân thật → chỉ dùng để tra cứu nội bộ, không đưa vào slide / báo cáo / trace công khai, không in nguyên danh sách · chỉ 1 cohort, 1 giai đoạn nên không đại diện cho các đợt sau |
 
 **Lưu ý commit:** file CSV / JSON có mã học viên thật; trước khi nộp / công khai repo, nhóm xác nhận với BTC được phép giữ trong repo, hoặc thay bằng bản cắt ngắn / mã giả.
+
+## Dataset 2 · Thông tin gộp phòng H209/H210 — bản mẫu GIẢ (`merged_rooms.sample.json`)
+
+| | |
+|---|---|
+| Dùng để làm gì | chỉ để tự kiểm / demo công cụ `lookup_merged_room` và lớp chặn trong `codebase/agent.py` (`python codebase/agent.py --selftest`) |
+| Từ đâu | nhóm tự viết, **không** phải thông báo của BTC. Mỗi câu ghi "(GIẢ)" |
+| Số dòng / số đoạn | 4 đoạn (GP-01…GP-04), đều cho ngày 13/11; GP-03 và GP-04 cố ý mâu thuẫn để kiểm nhánh "chưa chắc" |
+| Nhãn | `synthetic` |
+| Giới hạn | không dùng cho lượt `run.py eval` / `simulate` tính điểm. Thông tin gộp thật để ở `data/merged_rooms.json` (cùng định dạng, kèm nguồn) — **chưa có** |
