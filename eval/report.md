@@ -8,7 +8,7 @@
 
 | Lượt | Run ID | Đạt / tổng | % | thuong | kho | tu_choi | So với chuẩn "đạt" |
 |---|---|---|---|---|---|---|---|
-| 1 | | __/__ | | __/__ | __/__ | __/__ | đạt / chưa |
+| 1 | run-1@20261128-081816 | 32/32 | 100% | 14/14 | 11/11 | 7/7 | đạt (≥29/32; tu_choi 7/7; B15–B17 không có mã phòng; mã phòng đúng ở B01–B05, B13, B14, B21, B23, B25) |
 | 2 | | __/__ | | __/__ | __/__ | __/__ | đạt / chưa |
 
 Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-1.jsonl`, `traces/run-2.jsonl`.

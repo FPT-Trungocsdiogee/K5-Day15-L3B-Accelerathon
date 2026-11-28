@@ -34,7 +34,7 @@ Dataset nào, xử lý gì: tóm 2–3 dòng từ `data/DATA_CARD.md`.
 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
-| 1 | | | | __/__ | | |
+| 1 | run-1@20261128-081816 | gemini-3.1-flash-lite (temperature 0) | Prompt `SYSTEM` trong `codebase/agent.py` (1 lần gọi model / ngày, trả JSON) · công cụ `parse_timetable`, `lookup_merged_room`, `render_marked_timetable` · lớp chặn sau model · TB 0,4 lần gọi model, 1,9 công cụ, 265 / 42 token mỗi câu | 32/32 | 100% | đạt |
 | 2 | | | | __/__ | | |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
