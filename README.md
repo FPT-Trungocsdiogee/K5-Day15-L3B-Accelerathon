@@ -127,4 +127,4 @@ Bản chạy thử gọi Gemini để quyết định đổi / giữ / chưa ch�
 | 4 | Bản chạy thử làm trọn lát cắt | `codebase/` · lệnh ở mục "Lệnh" |
 | 5 | Định nghĩa "tốt" + bộ câu thử | `data/DATA_CARD.md` · `eval/` |
 | 6 | Mô phỏng chi phí khi dùng thật | `cost/` |
-| 7 | Slide + demo + video dự phòng | Slide: `Accelerathon - demo_slides.pdf` ở thư mục gốc · link video: *chưa có — nhóm điền trước CP4* |
+| 7 | Slide + demo + video dự phòng | Slide: `Accelerathon - demo_slides.pdf` ở thư mục gốc · link video(CLI Demo): https://drive.google.com/file/d/1yy8aq3rMnwCeSQ9bEu2bBADNxzQbHaU4/view?usp=sharing · Web demo: https://accelerathon-aithucchien.ai.studio|
