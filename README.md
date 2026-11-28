@@ -1,35 +1,8 @@
-> Đây là khung repo nộp bài. Điền mọi chỗ `____`, giữ nguyên tên các mục. **Mục 0 xoá đi sau khi tạo repo xong.**
-> Giờ, mốc, luật, rubric: xem `README.md`, `02-guide.md`, `03-rubric.md` trong repo đề (bộ đề BTC phát).
+# Accelerathon — Đánh dấu buổi lý thuyết đổi phòng sang H209/H210
 
-# [Tên nhóm] — [Tên lát cắt]
-
-**Thành viên, lớp, track:** xem [TEAMS.md](TEAMS.md). **Điền TEAMS.md đúng format**: khi chấm và đánh giá, BTC quét file này để ghép điểm cho từng người.
+**Thành viên, lớp, track:** xem [TEAMS.md](TEAMS.md) — Lớp L3B · Track A (EdTech). **Điền TEAMS.md đúng format**: khi chấm và đánh giá, BTC quét file này để ghép điểm cho từng người.
 
 *Lát cắt = phần nhỏ nhất làm xong được trong hackathon: một người dùng · một việc · một quyết định AI · một kết quả.*
-
----
-
-## 0. Tạo repo nhóm từ khung này *(guide bước 1.0 — xoá mục này khi xong)*
-
-**Hai luật:** repo **mới, công khai (Public)** · tên `K5-Day15-<lớp>-<tên nhóm>`, vd `K5-Day15-L3A-StudyPulse` (tên nhóm viết liền, không dấu). Chép **nội dung bên trong** `starter-repo/` — `README.md`, `run.py` phải nằm ngay ở trang đầu repo.
-
-**(a) Không cần terminal — làm trên web GitHub**
-1. **New repository** → tên theo mẫu → **Public** → không tick thêm gì → tạo.
-2. Trên máy mở thư mục `starter-repo/`, **bật hiện file ẩn** (Mac Finder: `Cmd + Shift + .` · Windows: View → Show → Hidden items) để thấy `.gitignore`, `.env.example`.
-3. Trên repo vừa tạo: **Add file → Upload files** → **kéo thả** tất cả file và thư mục bên trong `starter-repo/` → **Commit changes**. Kéo thả mới giữ được thư mục con; lỗi vì nhiều file quá thì tải từng thư mục.
-4. Kiểm: có `.gitignore` chưa (hay thiếu nhất). Thiếu thì **Add file → Create new file**, tên `.gitignore`, dán nội dung từ máy.
-5. Từ giờ sửa file ngay trên web (biểu tượng bút chì → Commit). Phần code vẫn cần **một** người chạy được trên máy: trước mỗi lượt chạy tải **Code → Download ZIP** về thư mục mới (mang `.env` sang), chạy xong chỉ upload file kết quả và file vừa sửa; trong lúc đang chạy không ai sửa `eval/benchmark.csv` trên web.
-
-**(b) Dùng git**
-```bash
-git clone https://github.com/<tai-khoan>/K5-Day15-L3A-TenNhom.git
-cd K5-Day15-L3A-TenNhom
-cp -R ../duong-dan-toi/starter-repo/. .      # Windows PowerShell: Copy-Item -Recurse -Force ..\duong-dan-toi\starter-repo\* .
-git status                                   # không được có .env, data-btc/
-git add -A && git commit -m "Khung repo từ starter-repo" && git push
-```
-
-**Xong khi:** mở link repo bằng **cửa sổ ẩn danh** thấy được file (link nộp CP1) · đã mời thành viên (Settings → Collaborators) · đã điền `TEAMS.md` và `python run.py check` không báo gì ở phần "Kiểm TEAMS.md".
 
 ---
 
@@ -43,7 +16,7 @@ git add -A && git commit -m "Khung repo từ starter-repo" && git push
 | Chấm cột `pass` theo metric spec | Chạy cả bộ một lệnh, có run ID, model, token từng câu (`run.py eval`) · tính % đạt (`run.py score`) |
 | Persona, số người dùng thật, giá model (`cost/personas.yaml`) | Sinh ~50 phiên, chạy thật qua bản chạy thử, tính chi phí / phiên, / task thành công, / tháng 3 kịch bản (`run.py simulate`) |
 
-*Ví dụ track A (ví dụ cỡ, không phải lời giải):* nhóm viết công cụ `search_lesson` tra bài pre-class đã đánh mã đoạn, luồng "tra đoạn → model trả lời kèm mã đoạn, không có thì nói không có", metric "mọi khẳng định có mã đoạn đúng", persona "ôn dồn trước kiểm tra". Khung chạy 25 câu thử ra `run-1.csv`, nhóm chấm `pass`, `score` in % đạt; `simulate` chạy 50 phiên ra chi phí / task thành công cho hai model.
+**Lát cắt của nhóm:** học viên L3A/L3B nhập mã học viên + một ngày học lý thuyết → trợ lý đối chiếu từng buổi lý thuyết đang ghi phòng lẻ H2xx với thông tin gộp lớp về H209/H210 → trả TKB ngày đó của chính học viên, đánh dấu buổi đổi phòng (phòng cũ gạch → phòng mới) kèm mã căn cứ, hoặc ghi "chưa chắc" để hỏi người vận hành lớp. Không sửa TKB gốc, không gửi thông báo cho ai.
 
 ## Chạy trong 3 phút
 
@@ -82,7 +55,7 @@ Trong README này lệnh viết là `python …`; máy nhóm cần `python3` hay
 | `python run.py eval` | Chạy cả bộ qua `codebase/agent.py` → `eval/run-1.csv` (lần sau `run-2.csv`…) + `traces/run-1.jsonl`. Mỗi dòng có run ID, model, số lần gọi model / công cụ, token. Model còn giả → chỉ ghi `run-mock.csv`; mọi câu lỗi → `run-error.csv`; Ctrl+C → `run-stopped.csv` — đều **không** được đánh số |
 | `python run.py eval --fake` | Thử riêng bộ chạy, không gọi agent → `eval/run-fake.csv` |
 | `python run.py score eval/run-1.csv` | Sau khi điền cột `pass` (1 / 0): in % đạt tổng và theo `type`. Còn ô trống → "CHƯA CHẤM XONG", không in % |
-| `python run.py simulate --try` | Thử mô phỏng chi phí 10 phiên (làm trước CP3) → `cost/simulate-try.csv` |
+| `python run.py simulate --try` | Thử mô phỏng chi phí 10 phiên → `cost/simulate-try.csv` |
 | `python run.py simulate` | Mô phỏng chi phí khi dùng thật theo `cost/personas.yaml` (≥50 phiên) → `cost/simulate-N.csv` + `cost/simulate-N-summary.md` |
 | `python run.py simulate --rate-from eval/run-2.csv` | Như trên, lấy tỉ lệ đạt từ đúng lượt chỉ định. Không ghi thì khung lấy lượt `run-N` mới nhất đã chấm, cùng model, và ghi rõ đã lấy lượt nào trong bản tóm tắt |
 
@@ -96,26 +69,33 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 | File | Viết gì | Bước guide |
 |---|---|---|
-| `codebase/agent.py` | `answer(text)` — luồng chính, đúng hình dạng ở `spec.md` §4. Khung có sẵn một workflow 2 bước *ví dụ* | 3.2 |
-| `codebase/tools.py` | Công cụ của bài toán, mỗi công cụ một hàm có `@tool` | 2.2, 3.2 |
-| `codebase/ai.py` | `call_model(system, user)` — chỗ duy nhất gọi model. Chưa điền `.env` thì chạy **chế độ giả** | 3.3 |
+| `codebase/agent.py` | `answer(text)` — luồng cố định: từ chối ngoài phạm vi → hỏi lại khi thiếu mã / ngày → tra căn cứ → model quyết định cho buổi có căn cứ → lớp `guard()` kiểm trước khi hiện | 3.2 |
+| `codebase/tools.py` | Ba công cụ có `@tool`: `parse_timetable`, `lookup_merged_room`, `render_marked_timetable` | 2.2, 3.2 |
+| `codebase/ai.py` | `call_model(system, user)` — chỗ duy nhất gọi model (Gemini REST, đọc token từ `usageMetadata`). Thiếu `.env` thì chạy **chế độ giả** | 3.3 |
 
-- **Trước CP2:** để chế độ giả, công cụ trả dữ liệu giả — `python run.py` đi hết luồng là đủ.
-- **Trước CP3:** nối model thật theo [docs/connect-model.md](docs/connect-model.md), `eval --try` thấy token > 0 rồi mới `eval`.
-- Bộ chạy gửi **nguyên ô `input`** của câu thử vào `answer(text)`. Dữ liệu nền (bài học, thông báo, lịch…) để trong `data/`, đọc qua công cụ.
+- **Hiện trạng:** đã nối model thật (Gemini, đặt qua `MODEL_NAME` trong `.env`; `.env` không commit). Hai lượt eval đã chạy: xem bảng ở [eval/report.md](eval/report.md).
+- Bộ chạy gửi **nguyên ô `input`** của câu thử vào `answer(text)`. Dữ liệu nền (TKB đã lưu, căn cứ gộp phòng) để trong `data/` và `eval/merged_room_fixture.csv`, đọc qua công cụ.
 
 ## Phần nào thật, phần nào giả
 
 | Thành phần | Thật / Giả | Ghi chú |
 |---|---|---|
-| Lời gọi AI ở quyết định trung tâm | **Thật** (bắt buộc từ CP3) | Model: ____ |
-|  |  |  |
+| Lời gọi AI ở quyết định trung tâm | **Thật** | Model: `gemini-3.1-flash-lite` (lượt 1), `gemini-3.5-flash-lite` (lượt 2). Chỉ quyết định đổi / giữ / chưa chắc cho buổi có căn cứ; 18/32 câu thử không qua model |
+| TKB học viên đọc | **Thật** (đã công bố) | Chuẩn hoá từ TKB BTC cấp, lưu trong `data/`. Chứa mã học viên thật, xem [data/DATA_CARD.md](data/DATA_CARD.md) |
+| Căn cứ gộp phòng H209/H210 | **Giả — nhóm tự viết** | `eval/merged_room_fixture.csv` (GOP-01…GOP-05, nguồn `tu_viet`). Không phải thông báo chính thức của BTC; không dùng để đi học thật |
+| Chấm cột `pass` | **Thật — chấm tay** | Theo `pass_criterion`, không dùng LLM chấm |
+| Đọc / ghi hệ thống của trường | **Không có** | Không đọc TKB trực tiếp, không sửa TKB gốc, không gửi thông báo (thiết kế, xem `spec.md` §4) |
+
+## Kết quả đến hiện tại
+
+- Bộ câu thử: **32 câu** (14 thường · 11 kho · 7 từ chối); 23/32 lấy từ TKB thật, 9 câu dựa trên căn cứ nhóm tự viết.
+- Lượt 1 (`gemini-3.1-flash-lite`, `run-1@20261128-081816`): **32/32 (100%)**.
+- Lượt 2 (`gemini-3.5-flash-lite`, `run-2@20261128-120915`): **32/32 (100%)**. Đổi model, không đổi code và bộ câu nên chưa chứng minh model mới tốt hơn.
+- Chi tiết, lỗi và điểm rủi ro: [eval/report.md](eval/report.md) · [eval/README.md](eval/README.md). Chi phí khi dùng thật: [cost/cost-estimate.md](cost/cost-estimate.md) — **chưa kết luận đáng làm** vì chưa có số impact / người / tháng đủ nguồn.
 
 ## Dùng AI vào việc gì
 
-2–3 dòng (bắt buộc): nhóm dùng công cụ AI nào để làm gì, người kiểm lại phần nào. Chi tiết: [docs/ai-usage.md](docs/ai-usage.md). Coding agent đọc [AGENTS.md](AGENTS.md).
-
-____
+Bản chạy thử gọi Gemini để quyết định đổi / giữ / chưa chắc cho các buổi có căn cứ; code kiểm mã căn cứ và phòng mới trước khi hiện. Trong quá trình làm, coding agent (Claude Code, theo [AGENTS.md](AGENTS.md)) hỗ trợ viết `codebase/ai.py`, và AI soạn nháp một số mục spec — người phụ trách mục đó đọc lại và sửa. Chi tiết: [docs/ai-usage.md](docs/ai-usage.md).
 
 ## File mẫu — điền ở bước nào
 
@@ -147,5 +127,4 @@ ____
 | 4 | Bản chạy thử làm trọn lát cắt | `codebase/` · lệnh ở mục "Lệnh" |
 | 5 | Định nghĩa "tốt" + bộ câu thử | `data/DATA_CARD.md` · `eval/` |
 | 6 | Mô phỏng chi phí khi dùng thật | `cost/` |
-| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · link video: ____ |
-| + | *Bonus:* người dùng thử | `validation/log.md` |
+| 7 | Slide + demo + video dự phòng | Slide: `Accelerathon - demo_slides.pdf` ở thư mục gốc · link video: *chưa có — nhóm điền trước CP4* |
