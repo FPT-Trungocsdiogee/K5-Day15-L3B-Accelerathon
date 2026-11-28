@@ -41,11 +41,11 @@ prices:             # USD / 1 triệu token — chép từ further-reading/model
   - model: gemini-3.1-flash-lite
     input: 0.25
     output: 1.50
-    source: "(ví dụ) https://ai.google.dev/gemini-api/docs/pricing · xem 25/11/2026"
-  - model: gemini-4-hydrogen
-    input: 1.50
-    output: 7.50
-    source: "(ví dụ) https://ai.google.dev/gemini-api/docs/pricing · xem 25/11/2026"
+    source: "https://ai.google.dev/gemini-api/docs/pricing · xem 28/11/2026"
+  - model: gemini-3.5-flash-lite
+    input: 0.3
+    output: 2.50
+    source: "https://ai.google.dev/gemini-api/docs/pricing · xem 28/11/2026"
 
 usd_to_vnd:         # tuỳ chọn: điền thì bản tóm tắt in thêm tiền Việt
   rate:
