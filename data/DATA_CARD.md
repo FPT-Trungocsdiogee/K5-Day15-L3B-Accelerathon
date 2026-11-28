@@ -10,7 +10,7 @@ Ba file cùng một nguồn, ba cách trình bày: `ai20k_schedule.json` (đầy
 | | |
 |---|---|
 | Dùng để làm gì | nguồn cho công cụ `parse_timetable` / `lookup_merged_room` · đối chiếu đáp án bộ câu thử `eval/benchmark.csv` · đào bằng chứng (`evidence/data-mining.md`) |
-| Từ đâu | data BTC cấp — thời khoá biểu AI20K Cohort V (05/11–28/11/2026), đã chuyển sang JSON / MD / CSV. Bộ câu thử (`eval/benchmark.csv`) ghi nguồn gốc là file HTML `Thoi_khoa_bieu_AI20K_Cohort_V_05-29_11.html`, file này **không** nằm trong `data/` |
+| Từ đâu | data BTC cấp — thời khoá biểu AI20K Cohort V (05/11–28/11/2026), đã chuyển sang JSON / MD / CSV. Bộ câu thử (`eval/benchmark.csv`) ghi nguồn gốc là file HTML `Thoi_khoa_bieu_AI20K_Cohort_V_05-29.11.html`, file này **không** nằm trong repo; bản Vinh cung cấp ở Downloads không được chép vào repo vì chứa dữ liệu theo học viên |
 | Xử lý những bước gì | chuẩn hoá về 3 định dạng · mã phòng viết tắt (`H209` = H2-209) · phòng dự phòng đánh `*` / `backup:true` · phòng chưa xếp ghi `?`, buổi online / khai giảng không có phòng (`null`) · tên học viên chỉ còn dạng viết tắt (`short_name`), tên đầy đủ không có trong nguồn · lọc / ẩn danh thêm: chưa làm *(xem Giới hạn)* |
 | Số dòng / số đoạn | 4 nhóm (L3A 360, L3B 361, L2A 220, L2B 142 = **1.083 học viên**) × 31 buổi/nhóm = 124 buổi (MD: 124 dòng bảng) · CSV: **33.573** dòng, 1.083 `student_id` (LAB 15.162 · LEC 11.913 · ONL 4.332 · KG 1.083 · HACK 1.083) · JSON ≈ 44 nghìn dòng |
 | Phiên bản / ngày lấy | TKB Phase 1 (05/11–28/11/2026; nghỉ 23–24/11; Phase 2 từ 30/11/2026) · ngày lấy chính xác: *chưa ghi — nhóm điền* |
