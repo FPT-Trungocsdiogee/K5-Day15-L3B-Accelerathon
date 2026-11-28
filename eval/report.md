@@ -9,9 +9,12 @@
 | Lượt | Run ID | Đạt / tổng | % | thuong | kho | tu_choi | So với chuẩn "đạt" |
 |---|---|---|---|---|---|---|---|
 | 1 | run-1@20261128-081816 | 32/32 | 100% | 14/14 | 11/11 | 7/7 | đạt (≥29/32; tu_choi 7/7; B15–B17 không có mã phòng; mã phòng đúng ở B01–B05, B13, B14, B21, B23, B25) |
-| 2 | | __/__ | | __/__ | __/__ | __/__ | đạt / chưa |
+| 2 | run-2@20261128-120915 | 32/32 | 100% | 14/14 | 11/11 | 7/7 | đạt (≥29/32; tu_choi 7/7; B15–B17 không có mã phòng; mã phòng đúng ở B01–B05, B13, B14, B21, B23, B25) |
+
+Model: lượt 1 `gemini-3.1-flash-lite` · lượt 2 `gemini-3.5-flash-lite`. Code và bộ câu không đổi giữa hai lượt.
 
 Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-1.jsonl`, `traces/run-2.jsonl`.
+Cột `pass` lượt 2 do nhóm chấm tay theo `pass_criterion` (32/32). B26–B32 ghi chú về metric mục (c); xem §4.
 
 ## 2. Lỗi lượt 1 — gom thành nhóm có tên
 
@@ -33,14 +36,14 @@ Lượt 1 không có câu nào trượt: 32/32 đạt (cột `pass` nhóm chấm
 
 ## 3. Một lần cải tiến
 
-- Nhắm vào nhóm lỗi: **không có** — lượt 1 không trượt câu nào, nên không có nhóm lỗi để nhắm. Chưa sửa code vì không có lỗi đo được để chứng minh cải tiến.
+- Nhắm vào nhóm lỗi: **không có** — lượt 1 không trượt câu nào, nên không có nhóm lỗi để nhắm.
 - Vì sao là nhóm **đau nhất với người dùng**: không áp dụng (xem mục 2).
-- Đã sửa gì: không sửa gì sau lượt 1. `codebase/` và `eval/benchmark.csv` giữ nguyên.
-- Kết quả: không áp dụng — chưa có lượt 2 nào chạy sau cải tiến.
-- Câu nào **tệ đi** sau khi sửa: không áp dụng.
-- Ghi chú: nếu lượt 2 có câu trượt, điền nhóm lỗi vào mục 2 và cải tiến nhắm vào nhóm đó. Không thêm câu thử mới giữa hai lượt, vì lượt 2 phải chạy trên cùng bộ câu.
+- Đã sửa gì: **không sửa code**. Thay đổi duy nhất giữa hai lượt là model: `gemini-3.1-flash-lite` → `gemini-3.5-flash-lite` (`MODEL_NAME` trong `.env`). `codebase/` và `eval/benchmark.csv` giữ nguyên.
+- Kết quả: nhóm lỗi không có nên không tính được; tổng 32/32 → 32/32 (100% → 100%).
+- Câu nào **tệ đi** sau khi đổi model: không có. Quyết định đổi / giữ / chưa chắc và mã căn cứ khớp lượt 1 ở cả 32 câu.
+- Ghi chú: đây là đổi model, không phải cải tiến nhắm lỗi. Hai lượt cùng 32/32 nên không chứng minh model mới tốt hơn; 18/32 câu không qua model (xem mục 2). Nếu lượt sau có câu trượt, điền nhóm lỗi vào mục 2 và cải tiến nhắm vào nhóm đó. Không thêm câu thử mới giữa các lượt.
 
 ## 4. Còn lại
 
-- Lỗi chưa sửa + nguy hiểm thế nào: __
-- Nếu có thêm 1 tuần: __
+- Lỗi chưa sửa + nguy hiểm thế nào: Trong câu trả lời của các câu hỏi B26-B32, câu trả lời chưa chỉ rõ người vận hành lớp là BTC hay lab coach, điều đó có thể dẫn đến việc học viên không biết contact ai trên nền tảng nào. 
+- Nếu có thêm 1 tuần: Thay đổi pass_criterion sao cho câu trả lời chỉ rõ rằng học viên có thể contact lab coach/BTC
