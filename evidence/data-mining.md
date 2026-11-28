@@ -49,3 +49,23 @@
 Data cho biết người trả lời tự báo cáo điều gì, không cho biết nguyên nhân hoặc xác minh hành vi thực tế. Mẫu nhỏ, chỉ có vai trò tự khai; nhóm không thể tách riêng 20 người ngoài nhóm theo từng dòng. Một nửa học viên báo có gặp khó trong tuần qua, một nửa báo không gặp; kết quả không đồng nhất. Không có số phút bị mất. Phân tích này dùng chính dữ liệu khảo sát nên không phải kiểm chứng độc lập với khảo sát.
 
 → Nhóm không thực hiện phỏng vấn; hiện chưa có nguồn độc lập khác để đối chiếu.
+
+## 6. Tần suất phòng lý thuyết — đếm từ TKB, không từ khảo sát
+
+> Thêm 28/11/2026. Khảo sát **không có câu hỏi tần suất cho phòng lý thuyết** (cột E chỉ hỏi phòng thực hành, mục 3). Vì vậy số lần được đếm từ TKB đã lưu: `data/ai20k_student_schedule_long.csv`, giai đoạn 1 từ 05/11 đến 28/11 (24 ngày, coi như 1 tháng).
+
+- Đếm gì: số buổi `kind=LEC` mà TKB ghi phòng lẻ H2xx (khác H209/H210) cho từng học viên L3A/L3B. Đây là **số lần học viên gặp tình huống cần xác nhận phòng** (độ phơi nhiễm), không phải số lần đi nhầm phòng.
+- Cách chạy lại: lọc `group ∈ {L3A, L3B}`, `kind = LEC`, `room` khớp `H2\d\d` và khác `H209`, `H210`; đếm theo `student_id`.
+
+| Đếm gì | Số | Ghi chú |
+|---|---:|---|
+| Học viên L3A/L3B trong TKB | 721 | L3A 360 · L3B 361 |
+| Học viên có ≥1 buổi lý thuyết ghi phòng lẻ H2xx | 231 / 721 (32%) | L3A 60/360 · L3B 171/361 |
+| Tổng lượt buổi lý thuyết ghi phòng lẻ H2xx / tháng | 855 | L3A 328 · L3B 527; 7.931 lượt LEC của L3, 6.650 lượt đã ở H209/H210 |
+| Trung bình mỗi học viên bị ảnh hưởng | 3,7 lần / tháng | 855 / 231; phân bố lệch: 110 người chỉ 1 lần, 81 người ≥ 6 lần |
+| Số buổi (lớp × ngày × buổi) có ít nhất 1 học viên ở phòng lẻ | 20 | Phòng lẻ hay gặp nhất: H203 (432 lượt), H207 (172), H201 (92) |
+| Tham khảo: L2A (ngoài lát cắt) | 73 học viên · 365 lượt | L2B: 0 |
+
+**Đối chiếu với khảo sát:** 32% học viên L3 có buổi lý thuyết ghi phòng lẻ theo TKB, gần với 8/22 (36%) học viên tự chọn "bị nhầm phòng / mất thời gian dò lại" và 6/22 (27%) chọn "lịch ghi H2xx nhưng thực tế gộp H209/H210". Hai nguồn đo khác nhau (TKB đo số lần gặp, khảo sát đo tình huống tự báo cáo), nên chỉ là khớp về độ lớn, không phải kiểm chứng.
+
+**Vẫn chưa có:** số phút mất mỗi lần dò lại (khảo sát không hỏi) và tỉ lệ lần thực sự đi nhầm phòng. Impact / tháng = 855 lượt × __ phút: thừa số phút phải ghi *(tự ước tính)* nếu không đo thêm.
